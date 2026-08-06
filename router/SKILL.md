@@ -1,23 +1,56 @@
 ---
-name: bb-methodology
+name: router
 description: >
-  Use at the start of any bug bounty session, when switching targets, or when unsure what to do next. Master router combining the 5-phase workflow with the critical-thinking mindset framework.
-  Also use for "what should I do next" or "where am I in the process."
+  Master router for bug-bounty hunting with AI agents. Routes any security-testing request to the
+  right specialized skill: it detects where you are in the hunt (understand, recon, hunt,
+  discipline, validation, reporting) and names the minimal skill set to load before acting.
+  Use at the start of any authorized security assessment, when switching targets, when unsure
+  what to run next, or when asking "where am I in the process?" / "what should I do next?".
+license: MIT
+compatibility: Agent-agnostic dispatcher over the skills/ collection (12 skills, 6 categories)
+metadata:
+  category: router
+  difficulty: intermediate
 ---
 
-# BUG BOUNTY METHODOLOGY — master router
+# Master Router — Bug Bounty Skill Dispatcher
 
-This file routes, it doesn't duplicate. Load the referenced part for depth; use this table only to decide which one.
+The entry point for bug-bounty hunting. It fingerprints the target and classifies the task,
+names the **minimal** set of specialized skills, and tells you to read them before acting.
+It **dispatches and composes** — it does not re-teach hunting techniques.
 
-| Part | Load when... |
+## When to use
+
+- At the **start of any authorized security assessment** — decide which skill(s) to load.
+- When the user names a target, says "test this", "look for bugs", or asks "which skill should I use?".
+- When switching targets or rotating.
+
+**When *not* to use:** once the right skill is loaded and the task is squarely inside it, work
+from that skill — don't re-run the router every turn. Re-route only when the task **pivots** to a
+new stage (router step 3).
+
+## Routing algorithm
+
+1. **Classify the task** — is it "understand the target", "map the surface", "hunt a bug class",
+   "stay disciplined", "prove a finding", or "write the report"?
+2. **Detect the target** — web app? API? which archetype? (see `skills/understand/application-archetypes`)
+3. **Read the routing table below** → load the minimal skill set for that stage.
+4. **Read the chosen skill(s) fully** before acting.
+5. **Re-route on pivot** — new evidence that moves you to another stage loads that stage's skills.
+
+## Routing table
+
+| Stage | Skills (read before acting) |
 |---|---|
-| 0 — Knowledge Base Auto-Load (`reference/phase0-knowledge-base.md`) | Always first, every session, before any recon/test |
-| 1 — Mindset (`reference/part1-mindset.md`) | Need the thinking framework — goal selection, trust-boundary questioning, anti-patterns |
-| 2 — Workflow (`reference/part2-workflow.md`) | Need the concrete phase-by-phase actions (recon → mapping → discovery → prove → report) |
-| 3 — Navigation & Timing (`reference/part3-navigation-timing.md`) | Stuck, rotating targets, or need the tool-order table |
-| 4 — Analysis Methodology (`reference/part4-analysis-methodology.md`) | Need root-cause/inconsistency-hunting depth instead of named-vuln-class hunting |
+| **Understand** | `application-archetypes` → `application-model-builder` |
+| **Map surface** | `web2-recon` |
+| **Hunt** | `web2-vuln-classes` · `business-logic-hunter` · `api-security` |
+| **Discipline** | `domain-scoped-hunting` (load **before** any hunt) |
+| **Prove** | `false-positive-killer` → `triage-validation` |
+| **Deliver** | `attack-path-builder` → `report-writing` |
 
-Default session order: 0 → 1 (once, sets the mindset) → 2 (drives the loop) → 3 (whenever stuck) → 4 (whenever Part 2's discovery phase needs deeper root-cause thinking, not just a vuln-class checklist).
+Default session order: Understand → Map → Discipline → Hunt → Prove → Deliver.
+Every output uses the shared evidence schema below (stage 5 of this file).
 
 ## RESPONSE-DRIVEN NEXT ACTIONS
 

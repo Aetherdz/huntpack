@@ -1,0 +1,31 @@
+{
+  "name": "HuntPack",
+  "description": "Method-first bug bounty skills for AI agents — a 12-skill, 6-stage hunting pipeline that works on any Agent Skills-standard tool. PoC or nothing.",
+  "version": "1.0.0",
+  "author": "Aether-DZ",
+  "license": "MIT",
+  "repository": "https://github.com/Aether-DZ/huntpack",
+  "plugins": [
+    {
+      "name": "huntpack",
+      "description": "Bug bounty hunter skills — router + 11 specialized skills across understand/recon/hunt/discipline/prove/deliver.",
+      "author": "Aether-DZ",
+      "license": "MIT",
+      "source": "https://github.com/Aether-DZ/huntpack",
+      "skills": [
+        "./",
+        "skills/understand/application-archetypes",
+        "skills/understand/application-model-builder",
+        "skills/recon/web2-recon",
+        "skills/hunting/web2-vuln-classes",
+        "skills/hunting/business-logic-hunter",
+        "skills/hunting/api-security",
+        "skills/discipline/domain-scoped-hunting",
+        "skills/validation/false-positive-killer",
+        "skills/validation/triage-validation",
+        "skills/reporting/attack-path-builder",
+        "skills/reporting/report-writing"
+      ]
+    }
+  ]
+}

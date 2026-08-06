@@ -38,7 +38,7 @@ The core differentiator is the **discipline layer** — `domain-scoped-hunting`,
 
 | Stage | Skills | What it does |
 |---|---|---|
-| **0. Conduct** | `bb-methodology` | Master router — tells the agent *where it is* and *what to run next*. |
+| **0. Conduct** | `router` | Master dispatcher — tells the agent *where it is* and *what to run next*. |
 | **1. Understand** | `application-archetypes` → `application-model-builder` | Recognize the target type, then build its model (assets, actors, trust boundaries) **before** any payload is sent. |
 | **2. Map surface** | `web2-recon` | Subdomains, live hosts, URL crawling, JS analysis, fuzzing. |
 | **3. Hunt** | `web2-vuln-classes` · `business-logic-hunter` · `api-security` | 24 bug classes + business-logic execution matrix + REST/OAuth/JWT patterns. |
@@ -50,14 +50,25 @@ The core differentiator is the **discipline layer** — `domain-scoped-hunting`,
 
 ## Quick install
 
-### Option A — copy (works everywhere)
+### Option A — marketplace (Claude Code)
 
 ```bash
-git clone https://github.com/<you>/HuntPack.git
-cd HuntPack
+claude install-plugin https://github.com/Aether-DZ/huntpack
 ```
 
-Then copy each skill folder into your agent's skill directory. The standard locations:
+### Option B — copy (works on any agent)
+
+```bash
+git clone https://github.com/Aether-DZ/huntpack.git
+cd HuntPack
+
+# example: install into Claude Code (personal)
+mkdir -p ~/.claude/skills
+cp -r router ~/.claude/skills/
+cp -r skills/* ~/.claude/skills/
+```
+
+The standard discovery locations:
 
 | Agent | Personal skills | Project skills |
 |---|---|---|
@@ -67,20 +78,15 @@ Then copy each skill folder into your agent's skill directory. The standard loca
 | **Cursor** | — | `.cursor/skills/` |
 | **Gemini CLI** | `~/.gemini/skills/` | — |
 
-```bash
-# example: install into Claude Code (personal)
-mkdir -p ~/.claude/skills
-cp -r skills/* ~/.claude/skills/
-```
-
-### Option B — symlink (more files to stay in sync)
+### Option C — symlink (single source)
 
 ```bash
-# keep skills/ as the single source, symlink into your agent
+# keep the repo as single source, symlink into your agent
+ln -s "$(pwd)/router" ~/.claude/skills/router
 for d in skills/*/; do ln -s "$(pwd)/$d" ~/.claude/skills/; done
 ```
 
-### Option C — Vercel skills CLI
+### Option D — Vercel skills CLI
 
 ```bash
 npx @vercel/skills install --agent claude-code --scope personal --link ./skills
@@ -90,7 +96,7 @@ Restart your agent session. The skills auto-load when a task matches their descr
 
 ### Just want one skill?
 
-Each folder is self-contained. Copy a single `skills/<name>/` into your agent and it works alone.
+Each folder is self-contained. Copy a single `skills/<category>/<name>/` into your agent and it works alone.
 
 ---
 
@@ -110,28 +116,49 @@ By using these skills you agree you are responsible for acting within the legal 
 
 ```
 HuntPack/
-├── README.md
-├── LICENSE            # MIT
-├── CHANGELOG.md
-├── docs/
-│   ├── INSTALL.md     # per-agent install & troubleshooting
-│   └── PIPELINE.md    # full methodology walkthrough
-└── skills/
-    ├── application-archetypes/
-    ├── application-model-builder/
-    ├── bb-methodology/
-    ├── web2-recon/
-    ├── web2-vuln-classes/
-    ├── business-logic-hunter/
-    ├── api-security/
-    ├── domain-scoped-hunting/
-    ├── false-positive-killer/
-    ├── triage-validation/
-    ├── attack-path-builder/
-    └── report-writing/
+├── router/               ← master dispatcher — tells the agent where it is & what to run next
+├── skills/               ← organized by pipeline stage
+│   ├── understand/       ← application-archetypes · application-model-builder
+│   ├── recon/            ← web2-recon
+│   ├── hunting/          ← web2-vuln-classes · business-logic-hunter · api-security
+│   ├── discipline/       ← domain-scoped-hunting
+│   ├── validation/       ← false-positive-killer · triage-validation
+│   └── reporting/        ← attack-path-builder · report-writing
+├── scripts/validate-skills.py   ← CI + local lint (frontmatter, leaks)
+├── .claude-plugin/marketplace.json
+├── docs/                 ← INSTALL · PIPELINE · SKILL-FORMAT
+├── .github/workflows/validate.yml
+├── LICENSE · CONTRIBUTING · CHANGELOG · SECURITY
+└── README.md
 ```
 
-Each `skills/<name>/SKILL.md` uses the open Agent Skills frontmatter standard — `name` and `description` only — so it runs on **every** standard-compliant agent with zero porting. Deep reference material lives in each skill's `references/` folder and loads only when needed (progressive disclosure).
+This mirrors the layout of the most mature open-source skill repositories: a **master router** at
+the top, and skills grouped by **discipline category**, each with an index table
+(`skills/README.md`). Every `SKILL.md` uses only the open Agent Skills frontmatter standard
+(`name` + `description`) so it runs on **any** standard-compliant agent with zero porting.
+
+## How it works
+
+```
+         ┌───────────┐
+         │   router   │  ← where are you? what's next?
+         └─────┬─────┘
+   ┌───────────┼───────────┐
+   ▼           ▼           ▼
+understand   recon      discipline
+   │           │           │
+   └───────┐   │           ▼
+           ▼   ▼         hunting
+        model → surface    │
+                           ▼
+                       validation
+                           │
+                           ▼
+                       reporting
+```
+
+Start with the `router`. It reads the stage and delegates. Discipline loads *before* hunting.
+Validation gates *every* finding before it reaches reporting.
 
 ---
 
