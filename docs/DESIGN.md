@@ -5,30 +5,32 @@ font size, spacing value, and component below traces to a token. No orphan hex c
 
 ## 0. Research Log (greenfield)
 
-- Embedded refs: shortlisted `voltagent` (void-black + emerald, terminal-native),
-  `shopify` (dark-first, neon green), `vercel` (black/white precision) → picked
-  **Layer A `taste-skill.md`** (anti-slop landing discipline, developer audience)
-  + **Layer B `voltagent.md`** (near-black canvas, emerald signal, warm charcoal
-  borders, system-ui/mono — exact match for the bug-bounty terminal identity and
-  the existing `banner.svg`).
+- Embedded refs: first pass picked `voltagent` (void-black + emerald, terminal-native).
+  **RE-ROUTED on user request** — the user named a live site ("شوف موقع opencode — سوي
+  لي نفس الأسلوب"): Layer B reference `opencode.ai.md` becomes the token source of
+  truth. **Layer A `taste-skill.md`** stays (anti-slop landing discipline).
+  Live site fetched (`The open source AI coding agent`, terminal hero, monospace
+  everywhere, nav GitHub/Docs/Download) → layout grammar captured.
 - Lazyweb: skipped — no network image tooling available in this environment.
-- Imagen drafts: skipped — no image-gen tool available. Hero focal object is a
-  hand-built terminal window (real chrome, real content), per voltagent's
-  "code snippets ARE the hero content" doctrine.
-- Existing brand asset: `docs/assets/banner.svg` (reticle mark, #0d1117 family,
-  #00e063 accent) — the site's canvas and accent are blended with it so the
-  banner block sits flush in the hero.
+- Imagen drafts: skipped — no image-gen tool available. Hero focal object is an
+  ASCII terminal window (opencode-style), hand-written in `<pre>`.
+- Existing brand asset: `docs/assets/banner.svg` (reticle mark, `#0d1117` + `#00e063`)
+  — the emerald accent is preserved as the single brand accent (replacing opencode's
+  blue); the cool canvas is dropped for opencode's warm near-black. The raster
+  banner stays a repo asset, not the page hero.
 
 ## 1. Atmosphere & Identity
 
-A deep-space command terminal for bug hunting. Near-black canvas interrupted only
-by the electric pulse of emerald — the "power on" of a hunt in progress. Surfaces
-are contained by warm charcoal borders, not shadows; depth reads as engineering
-precision, not decoration. The signature is the **reticle**: a glowing crosshair
-that says "target acquired — now verify." Every section feels like a module in a
-cockpit: dense inside (mono data, stage numbers), cinematic between (huge vertical
-runs). This is a tool page for hunters, not a SaaS pitch — the terminal window in
-the hero is the hero.
+A terminal emulator at 2am: warm near-black (`#201d1d`, a lived-in reddish-brown,
+never clinical black) with off-white text (`#fdfcfc`) — every word, every label,
+every button rendered in the same monospace voice. Nothing decorative, nothing
+elevated: surfaces are flat, depth comes from hairlines and background shifts,
+the way a real terminal has no shadows. The signature is the **ASCII reticle** —
+a crosshair drawn in box-drawing characters inside the hero terminal, the one
+moment that says "target acquired." Sections are separated by generous vertical
+spacing, not dividers. This is a code tool speaking code: hierarchy is size and
+weight alone, the brand accent (emerald) appears surgically on the few things
+that act.
 
 ## 2. Color
 
@@ -36,188 +38,169 @@ the hero is the hero.
 
 | Role | Token | Value | Usage |
 |------|-------|-------|-------|
-| Canvas/void | `--bg-void` | `#08090c` | Page background |
-| Canvas/hero | `--bg-hero` | `#0b0e13` | Hero band (blends banner) |
-| Surface/card | `--bg-surface` | `#0f1115` | Cards, panels |
-| Surface/elevated | `--bg-elevated` | `#14171c` | Terminal window, code blocks |
-| Border/default | `--border` | `#2b2927` | Warm charcoal, standard containment |
-| Border/strong | `--border-strong` | `#3a3733` | Emphasized containers, hover |
-| Border/accent | `--accent` | `#00d992` | Active, selected, focus, links |
-| Text/primary | `--text-1` | `#f0efec` | Headlines, body (snow, warm) |
-| Text/secondary | `--text-2` | `#a8a29e` | Captions, lead, muted body |
-| Text/tertiary | `--text-3` | `#7d8590` | Metadata, stage labels |
-| Text/mint | `--mint` | `#2fd6a1` | CTA text on dark, ok-lines |
-| Accent/dim | `--accent-dim` | `rgba(0,217,146,.10)` | Tints, glows, hover fills |
-| Status/error | `--err` | `#fb565b` | Kill/error terminal lines only |
+| Canvas | `--bg` | `#201d1d` | Page background, button fills (warm near-black) |
+| Surface/elevated | `--bg-elevated` | `#302c2c` | Terminal windows, code blocks, hover fills |
+| Border/warm | `--border` | `rgba(15,0,0,.12)` | Hairline separators, section rules |
+| Border/outline | `--border-strong` | `#646262` | Container outlines, button borders |
+| Text/primary | `--text-1` | `#fdfcfc` | Headlines, body, button text (warm off-white) |
+| Text/secondary | `--text-2` | `#9a9898` | Lead, captions, muted links |
+| Text/muted | `--text-3` | `#84848a` | Metadata, line numbers, tags (lifted from #6e6e73 to pass WCAG AA 4.5:1 on `--bg`) |
+| Accent | `--accent` | `#00e063` | Brand emerald — links, focus, key highlights (replaces opencode blue) |
+| Success | `--ok` | `#30d158` | Confirmed findings, positive lines |
+| Danger | `--err` | `#ff3b30` | Killed findings, errors |
+| Warning | `--warn` | `#ff9f0a` | Suspicious-but-unconfirmed, warnings |
 
 ### Rules
 
-- Emerald is an **accent only** — never a surface fill, never large backgrounds.
-- One chromatic identity: green + warm neutrals on near-black. No blue/purple,
-  no decorative warm colors (red/amber reserved for terminal error semantics).
-- Depth comes from border weight/color, not shadows (voltagent doctrine).
-- No pure `#000000`, no pure `#ffffff`.
+- Accent is used **only** on interactive or high-signal moments. Never decorative fills.
+- Semantic colors follow Apple HIG (like opencode): green = success, red = danger,
+  orange = warning — reserved for terminal verdict lines.
+- No pure `#000000`, no pure `#ffffff`. Warm undertone is load-bearing.
+- One accent: emerald everywhere or nowhere. No second chromatic voice.
 
 ## 3. Typography
 
-### Scale (system-ui + mono only — zero web-font requests)
+### Scale (Berkeley Mono register — mono everywhere, zero web-font requests)
 
-| Level | Token | Size | Weight | LH | LS | Usage |
-|-------|-------|------|--------|----|----|-------|
-| Display | `--fs-display` | `clamp(2.5rem,6vw,3.75rem)` | 700 | 1.02 | -0.025em | Hero H1 |
-| H2 | `--fs-h2` | `clamp(1.75rem,3vw,2.25rem)` | 650 | 1.11 | -0.02em | Section heads |
-| H3 | `--fs-h3` | `1.25rem` | 600 | 1.3 | 0 | Card titles |
-| Body | `--fs-body` | `1rem` | 400 | 1.6 | 0 | Default text |
-| Body/sm | `--fs-sm` | `.875rem` | 400 | 1.55 | 0 | Secondary info |
-| Caption | `--fs-caption` | `.8125rem` | 500 | 1.4 | 0 | Metadata |
-| Overline | `--fs-overline` | `.6875rem` | 600 | 1.3 | .14em | Uppercase labels (max 2/page) |
-| Mono | `--fs-mono` | `.875rem` | 400 | 1.5 | 0 | Code, terminal |
-| Mono/sm | `--fs-mono-sm` | `.75rem` | 400 | 1.45 | 0 | Terminal metadata |
+| Level | Token | Size | Weight | LH | Usage |
+|-------|-------|------|--------|----|-------|
+| H1 | `--fs-h1` | `38px` | 700 | 1.5 | Hero title |
+| H1/mobile | — | `clamp(28px, 6vw, 38px)` | 700 | 1.4 | Hero < 640px |
+| H2 | `--fs-h2` | `16px` | 700 | 1.5 | Section titles, group labels |
+| Body | `--fs-body` | `16px` | 400 | 1.5 | Paragraphs |
+| Body/medium | — | `16px` | 500 | 1.5 | Links, buttons, nav |
+| Caption | `--fs-caption` | `14px` | 400 | 2.0 | Footnotes, metadata, tags |
+| Terminal | `--fs-mono` | `14px` | 400 | 1.6 | ASCII hero, code blocks |
 
-### Stacks
+### Stack (single family — "everything is code")
 
-- Sans (all text): `system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif`
-- Mono (terminal/code/numbers): `ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace`
+`"Berkeley Mono", "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", Courier New, monospace`
 
 ### Rules
 
-- Headings are compressed (LH ≤ 1.11, negative LS) — dense spec blocks, not airy copy.
-- Body never below 14px. Mono reserved for code, terminal, stage numbers, buttons.
-- `font-variant-numeric: tabular-nums` on stage numbers.
+- **One font, one voice.** No sans-serif, no serif anywhere. Hierarchy is weight
+  (700/500/400) and size only.
+- Line-height 1.5 standard, 2.0 relaxed for captions — the monospace grid breathes.
+- Never introduce a second typeface. No web fonts loaded.
 
 ## 4. Spacing & Layout
 
-### Base unit: 4px
+### Base unit: 8px (4px for fine adjustments only)
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--sp-1` | 4px | Tight: icon gaps |
-| `--sp-2` | 8px | Inline groups |
+| `--sp-1` | 4px | Micro adjustments, borders |
+| `--sp-2` | 8px | Tight gaps, icon spacing |
 | `--sp-3` | 12px | Compact paddings |
-| `--sp-4` | 16px | Standard paddings |
-| `--sp-5` | 20px | Comfortable |
-| `--sp-6` | 24px | Card padding, gaps |
-| `--sp-8` | 32px | Between card groups |
+| `--sp-4` | 16px | Standard gaps, list rhythm |
+| `--sp-5` | 20px | Comfortable paddings |
+| `--sp-6` | 24px | Card/inner paddings, gaps |
+| `--sp-8` | 32px | Between groups |
 | `--sp-10` | 40px | Within-section rhythm |
-| `--sp-12` | 48px | Major breaks |
+| `--sp-12` | 48px | Major section breaks |
 | `--sp-16` | 64px | Section rhythm |
 | `--sp-20` | 80px | Hero/terminal spacing |
-| `--sp-24` | 96px | Max separation |
+| `--sp-24` | 96px | Maximum separation |
 
 ### Grid
 
-- Max content width: **1120px**, centered (`--content: min(1120px, 100% - 48px)`).
-- Layouts: hero centered single-column; pipeline 6-col stepper; skills 3-col card
-  grid (→2→1); routing 2-col split; install centered code.
-- Breakpoints: sm 640 / md 768 / lg 1024. Every multi-col layout declares a
-  `<768px` single-column fallback.
+- Max content width: **880px** centered (`--content: min(880px, 100% - 48px)`) —
+  narrow, reading-optimized, like opencode.
+- Primary pattern: single column. Lists and terminal blocks span full width.
+- Breakpoints: sm 640 / md 768 / lg 1024. Multi-column (footer) collapses below 640.
+- Hero: centered, terminal block full-width of content.
 
-### Radius (locked scale)
+### Radius (locked scale — two values only)
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--r-sm` | 4px | Chips, inline code, small containers |
-| `--r-md` | 6px | Buttons |
-| `--r-lg` | 8px | Cards, terminal |
-| `--r-pill` | 9999px | Stage tags, badges |
+| `--r-default` | 4px | Everything: buttons, containers, code blocks |
+| `--r-input` | 6px | (reserved) form inputs only |
+
+No pills, no large radii. Utilitarian corners.
 
 ## 5. Components
 
-### Reticle mark (hero + nav)
-- **Structure**: inline SVG (circles + crosshair + ticks), viewBox 0 0 120 120.
-- **Spacing**: 48px hero / 26px nav.
-- **States**: static; glow layer pulses (hero only) via opacity on `::before` radial.
-- **A11y**: `role="img"` + `aria-label="HuntPack reticle mark"`.
-- **Motion**: glow `opacity` 0.35→0.85, 4s ease-in-out infinite; disabled under
-  `prefers-reduced-motion`.
+### Terminal window (hero + routing)
+- **Structure**: `<pre>` with box-drawing characters, no chrome bars — the ASCII is
+  the whole element (opencode-style). Single monospace block, flat `--bg-elevated`.
+- **Spacing**: padding `--sp-6`; radius `--r-default`; border `--border-strong` 1px.
+- **States**: static; accent used inside for "ok"/verdict lines.
+- **A11y**: `aria-label` describes the demo; copy inside remains selectable text.
 
-### Terminal window (hero focal object)
-- **Structure**: `.term` card — header bar (3 traffic dots + title `huntpack — zsh`) + mono body.
-- **Spacing**: padding `--sp-4/--sp-5`; radius `--r-lg`; border `--border` + `--border-strong` header.
-- **States**: static; cursor blinks (mono block, steps() 1s) — meaningful "alive".
-- **A11y**: the terminal is illustrative; a visually-hidden `<h2>` sibling states the pipeline summary.
-- **Motion**: cursor blink only; off under reduced motion.
+### Primary button
+- **Structure**: `<a class="btn">` — `--bg` fill, `--text-1` text, 1px `--border-strong`, radius `--r-default`, padding **4px 20px**, weight 500.
+- **States**: hover — border lightens to `#8a8888`, text → `--accent`; active — bg shifts `--bg-elevated`; focus — 1px solid `--accent` outline.
+- **A11y**: text `#fdfcfc` on `#201d1d` = 13:1. One label per intent ("View on GitHub").
 
-### Primary button (GitHub — one intent label "View on GitHub" everywhere)
-- **Structure**: `<a class="btn btn-primary">` — accent border 1px, mint text, `--r-md`, padding 12px 18px.
-- **States**: hover `--bg-surface`→`#1a1d22` + border `--accent`; active `translateY(1px)`; focus `outline 2px --accent` offset 2.
-- **A11y**: text `--mint` on dark ≥ 9:1.
+### Text link
+- **Structure**: `<a>` — `--text-1`, weight 500, **underline 1px** by default (opencode default link).
+- **States**: hover — color → `--accent`; focus — 1px `--accent` outline.
+- **Variants**: muted (`--text-2`, no underline) for nav/secondary; accent (`--accent`) for key CTAs.
 
-### Secondary link-button
-- Same anatomy; text `--text-1`, border `--border-strong`; hover border `--accent`, text `--mint`.
+### Skill row (the "arsenal" — no cards, pure text)
+- **Structure**: list of rows, `16px` mono — name (weight 700) + one-line desc (weight 400, `--text-2`) + stage tag (caption, `--text-3`). Rows separated by `1px var(--border)` hairlines.
+- **States**: hover — name → `--accent`; row bg shift to `--bg-elevated`.
+- **Layout**: single column, `--sp-4` vertical rhythm between items. Group labels as code comments (`// understand`).
 
-### Skill card
-- **Structure**: `<article class="card">` — mono name, stage tag pill, one-line desc, mono "load →" hint.
-- **Spacing**: padding `--sp-6`; radius `--r-lg`; border `--border` 1px.
-- **States**: hover border `--accent`, `translateY(-2px)`, glow `--accent-dim`; focus ring `--accent`.
-- **Layout**: grid 3-col → 2 → 1.
-
-### Stage stepper (pipeline)
-- **Structure**: `<ol class="steps">` — 6 items, mono `01…06`, name, 4-word descriptor, node dot.
-- **States**: node dot `--accent`; hover row border → `--accent`.
-- **A11y**: `aria-label="Pipeline stages"` on the list.
-- **Layout**: 6-col grid desktop, vertical list mobile with left rail.
+### Stage list (pipeline)
+- **Structure**: ordered list, mono rows `01 → 06` — num (accent), name (700), descriptor (400, `--text-2`). Hairline separators.
+- **States**: hover row bg → `--bg-elevated`.
+- **A11y**: `aria-label="Pipeline stages"`.
 
 ### Code block (install)
-- **Structure**: `.code` — `pre > code` mono on `--bg-elevated`, header bar with filename + copy button.
-- **States**: copy button swaps to "Copied" (accent) for 1.6s.
-- **A11y**: copy button `aria-label="Copy command"`, `role="button"` keyboard reachable.
+- **Structure**: `<pre>` mono on `--bg-elevated`, `--border-strong`, radius 4px. Copy button in top-right (caption size).
+- **States**: copy swaps to "Copied" (`--ok`) for 1.6s.
 
-### Site header
-- **Structure**: sticky top, `--bg-void` + bottom `--border` 1px, height 64px, max-width content, flex: mark+wordmark | nav | GitHub btn.
-- **Mobile**: nav collapses behind hamburger (aria-expanded), panel `--bg-surface` border-bottom.
-- **States**: nav link hover → `--mint`; active section link `--accent` underline.
+### Navigation
+- Horizontal, `--bg` solid (no blur), single line at desktop, height 64px.
+- Brand logotype left in mono, links weight 500 with underline on hover, one dark-fill button right.
+- Mobile (<640px): collapses to toggle, stacked panel.
 
 ## 6. Motion & Interaction
 
 | Type | Duration | Easing | Usage |
 |------|----------|--------|-------|
-| Micro | 120ms | ease-out | Button press, copy swap |
-| Standard | 250ms | `cubic-bezier(.16,1,.3,1)` | Hover, panel open |
-| Emphasis | 600ms | `cubic-bezier(.16,1,.3,1)` | Section reveal |
-| Ambient | 4s | ease-in-out | Reticle glow pulse, cursor blink |
+| Micro | 120ms | ease-out | Hover color/border shifts |
 
 ### Rules
 
-- Only `transform` and `opacity` animate. Never layout properties.
-- Reveal-on-scroll uses `IntersectionObserver` adding `.in` — no scroll listeners.
-- Reduced motion (`prefers-reduced-motion: reduce`): all reveals instant, glow
-  static, cursor hidden.
-- Slop ban: no hover that changes nothing, no decorative loops. Glow says
-  "power on", cursor says "terminal alive", reveal sequences content.
+- **Minimal by design** (terminal-inspired): color transitions 100–150ms only.
+- No scale, no translate, no rotate, no reveal-on-scroll, no glow pulses, no marquee.
+- Motion serves state: hover/active/focus feedback only. Content appears instantly.
+- `prefers-reduced-motion`: nothing to reduce beyond the 120ms color fades — they are
+  not disabled because they are not motion-sensitive (color-only, no vestibular impact).
 
 ## 7. Depth & Surface
 
-Strategy: **borders-only + one ambient glow** (voltagent).
+Strategy: **flat, border-only** (opencode — zero shadows, zero gradients, zero blur).
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat | none | Page canvas |
-| Contained | 1px `--border` | Cards, header, code blocks |
-| Emphasized | 1px `--border-strong` | Terminal header, hover containers |
-| Accent | 1px `--accent` | Active/selected, focus, links |
-| Glow | `--accent-dim` radial (opacity-animated) | Hero reticle signature moment |
+| Flat | none | Page canvas, most text |
+| Subtle | `1px var(--border)` | Hairline separators between rows/lists |
+| Outline | `1px var(--border-strong)` | Terminal windows, code blocks, buttons |
 
-No box-shadows anywhere. Elevation is communicated by border weight/color and by
-surface tone (`--bg-surface` → `--bg-elevated`).
+Surface differentiation via `--bg` → `--bg-elevated` shifts only. No elevation
+illusion anywhere.
 
 ## 8. Accessibility Constraints & Accepted Debt
 
 ### Constraints
 
-- WCAG 2.2 AA floor: body ≥ 4.5:1 (measured: text-1 16:1, text-2 8:1, text-3 5.3:1,
-  mint-on-surface 9:1 — all pass; large text ≥ 3:1).
-- Visible `:focus-visible` ring: 2px `--accent`, offset 2px, on every interactive element.
-- Full keyboard reachability: skip-link to `#main`, semantic landmarks
-  (`header/nav/main/section/footer`), list semantics, `aria-expanded` on hamburger.
-- `prefers-reduced-motion` fully respected (Section 6).
+- WCAG 2.2 AA floor: text-1 on bg 13:1, text-2 on bg 6.6:1, muted 4.7:1, accent
+  `#00e063` on `#201d1d` ≈ 7:1 — all pass AA; body is AAA.
+- Visible `:focus-visible`: 1px `--accent` outline offset 2px on every interactive element.
+- Full keyboard reachability: skip-link to `#main`, landmarks (`header/nav/main/section/footer`),
+  list semantics, `aria-expanded` on nav toggle, `aria-label` on copy buttons.
 - `lang="en"`, unique `<title>`, meta description, OG/Twitter, JSON-LD
   (SoftwareApplication + WebSite), canonical URL.
-- Terminal/code content remains readable text (no image fallbacks needed).
+- Terminal/pre content is real selectable text — no images.
 
 ### Accepted Debt
 
 | Item | Location | Why accepted | Owner / Exit |
 |------|----------|--------------|--------------|
-| No automated Lighthouse in CI | repo-wide | No browser tooling in this environment; page is zero-request static (no fonts/CDN/JS-heavy) so risk is low | Re-audit in browser when tooling available |
+| No automated Lighthouse in CI | repo-wide | No browser tooling in this environment; page is zero-request static (no fonts/CDN/JS-heavy) | Re-audit in browser when tooling available |
 | OG image is an SVG | hero | GitHub serves SVG fine; raster generation not available here | Replace with PNG if scrapers misbehave |
+| Berkeley Mono not self-hosted | typography | No font files available; falls back to ui-monospace/SFMono (system-native, zero cost) | Self-host WOFF2 if brand fidelity demanded |

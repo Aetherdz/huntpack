@@ -1,10 +1,8 @@
 /* HuntPack site — app.js
-   Progressive enhancement only: copy buttons, reveal-on-scroll, nav toggle.
-   No scroll listeners; reveal uses IntersectionObserver. */
+   Progressive enhancement only: copy buttons, mobile nav toggle.
+   No reveal-on-scroll (opencode design = flat, no motion), no scroll listeners. */
 (function () {
   "use strict";
-
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- Copy buttons ---------- */
   document.querySelectorAll(".copy").forEach(function (btn) {
@@ -21,17 +19,17 @@
       }
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(done, function () {
-          fallbackCopy(text, btn);
+          fallbackCopy(text);
           done();
         });
       } else {
-        fallbackCopy(text, btn);
+        fallbackCopy(text);
         done();
       }
     });
   });
 
-  function fallbackCopy(text, btn) {
+  function fallbackCopy(text) {
     var ta = document.createElement("textarea");
     ta.value = text;
     ta.setAttribute("readonly", "");
@@ -43,25 +41,9 @@
     document.body.removeChild(ta);
   }
 
-  /* ---------- Reveal on scroll (IntersectionObserver only) ---------- */
-  var revealEls = document.querySelectorAll(".reveal");
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    revealEls.forEach(function (el) { el.classList.add("in"); });
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-    revealEls.forEach(function (el) { io.observe(el); });
-  }
-
   /* ---------- Mobile nav toggle ---------- */
   var toggle = document.getElementById("nav-toggle");
-  var nav = document.getElementById("site-nav");
+  var nav = document.getElementById("nav-links");
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
