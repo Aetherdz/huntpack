@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HuntPack — Method-first bug bounty skills for AI agents</title>
+  <meta name="description" content="HuntPack is a method-first bug bounty skill library: 12 skills and a master router that turn any AI agent into a disciplined, PoC-or-nothing vulnerability hunter.">
+  <meta name="theme-color" content="#08090c">
+  <link rel="canonical" href="https://aether-dz.github.io/huntpack/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HuntPack">
+  <meta property="og:title" content="HuntPack — Method-first bug bounty skills">
+  <meta property="og:description" content="12 skills + a master router that make AI agents hunt like pros. Verify, then report. PoC or nothing.">
+  <meta property="og:url" content="https://aether-dz.github.io/huntpack/">
+  <meta property="og:image" content="https://aether-dz.github.io/huntpack/assets/banner.svg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HuntPack — Method-first bug bounty">
+  <meta name="twitter:description" content="12 skills + a master router for disciplined, scoped bug bounty hunting by AI agents.">
+  <meta name="twitter:image" content="https://aether-dz.github.io/huntpack/assets/banner.svg">
+
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HuntPack",
+    "url": "https://aether-dz.github.io/huntpack/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "description": "Method-first bug bounty skill library for AI agents: 12 skills and a master router, from target analysis to report writing, with PoC-or-nothing validation.",
+    "license": "https://mit-license.org/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="HuntPack home">
+        <svg class="brand-mark" viewBox="0 0 120 120" role="img" aria-hidden="true">
+          <circle cx="60" cy="60" r="46" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="2"/>
+          <circle cx="60" cy="60" r="33" fill="none" stroke="currentColor" stroke-opacity=".75" stroke-width="1.6"/>
+          <circle cx="60" cy="60" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="60" cy="60" r="7" fill="currentColor"/>
+          <path d="M13 60h23 M84 60h23 M60 13v23 M60 84v23" stroke="currentColor" stroke-width="2" stroke-opacity=".8"/>
+          <path d="M7 46v8h16M7 74v-8h16M113 46v8H97M113 74v-8H97" stroke="currentColor" stroke-width="2" stroke-opacity=".9"/>
+        </svg>
+        <span class="brand-name">huntpack</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#pipeline">Pipeline</a>
+        <a href="#skills">Skills</a>
+        <a href="#routing">Routing</a>
+        <a href="#install">Install</a>
+        <a class="btn btn-primary btn-nav" href="https://github.com/Aether-DZ/huntpack" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          View on GitHub
+        </a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-controls="site-nav" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-atmo" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="overline">Method-first &middot; Bug bounty skills</p>
+        <h1 class="hero-title">Bug bounty,<br>with a <em>method</em>.</h1>
+        <p class="hero-sub">12 skills and a master router that make any AI agent hunt with discipline — verify, then report. PoC or nothing.</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://github.com/Aether-DZ/huntpack" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="btn btn-secondary" href="https://github.com/Aether-DZ/huntpack/blob/main/docs/INSTALL.md">Read the docs</a>
+        </div>
+
+        <figure class="term" role="group" aria-label="HuntPack pipeline in action">
+          <div class="term-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="term-title">huntpack — zsh</span>
+          </div>
+          <h2 class="sr-only">HuntPack turns a request into a six stage, evidence-driven hunt</h2>
+          <div class="term-body">
+<pre><span class="t-prompt">$</span> huntpack --assess <span class="t-arg">"example.com"</span>
+<span class="t-ok">ok</span>  router ▾ dispatch <span class="t-dim">application-archetypes</span>
+<span class="t-ok">ok</span>  understand ▸ classified <span class="t-arg">e-commerce</span>
+<span class="t-ok">ok</span>  model ▸ 8 assets · 3 actors · 2 trust walls
+<span class="t-ok">ok</span>  hunt ▸ business-logic <span class="t-warn">price-bypass</span> <span class="t-arg">CONFIRMED</span>
+<span class="t-ok">ok</span>  validate ▸ re-tested clean · <span class="t-arg">3/4 killed</span>
+<span class="t-ok">ok</span>  report ▸ written <span class="t-arg">EN</span> · PoC attached
+<span class="t-meta">status  : 1 verified finding</span>
+<span class="t-meta">verdict : <span class="t-ok">PoC or nothing</span></span><span class="t-cursor"></span></pre>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="pipeline section" id="pipeline">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>One method. Six stages.</h2>
+          <p>HuntPack is not a payload pack. It is a decision pipeline that holds an agent honest from first click to final report.</p>
+        </div>
+
+        <ol class="steps reveal" aria-label="Pipeline stages">
+          <li class="step"><span class="step-num">01</span><span class="step-name">Understand</span><span class="step-tag">archetypes · app model</span></li>
+          <li class="step"><span class="step-num">02</span><span class="step-name">Recon</span><span class="step-tag">surface mapping</span></li>
+          <li class="step"><span class="step-num">03</span><span class="step-name">Hunt</span><span class="step-tag">targeted exploitation</span></li>
+          <li class="step"><span class="step-num">04</span><span class="step-name">Discipline</span><span class="step-tag">scoped · honest</span></li>
+          <li class="step"><span class="step-num">05</span><span class="step-name">Validate</span><span class="step-tag">proof, no theory</span></li>
+          <li class="step"><span class="step-num">06</span><span class="step-name">Report</span><span class="step-tag">chain + write-up</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>The arsenal</h2>
+          <p>Thirteen scoped skills — one dispatcher, twelve specialists. Each one is a decision matrix you can load into any agent.</p>
+        </div>
+
+        <div class="card card-router">
+          <span class="card-tag tag-mint">router</span>
+          <h3 class="card-name">The dispatcher</h3>
+          <p>Reads any request, routes it to the right specialist, and enforces the method. A single entry point for every hunt — understand first, never shoot blind.</p>
+          <span class="card-load">load &rarr; router</span>
+        </div>
+
+        <div class="stage-group">
+          <h3 class="stage-title">Understand</h3>
+          <div class="grid">
+            <article class="card"><span class="card-tag">understand</span><h3 class="card-title mono">application-archetypes</h3><p>Classify a target instantly — e-commerce, fintech, SaaS — and get its ready-made attack plan.</p><span class="card-load mono">load &rarr;</span></article>
+            <article class="card"><span class="card-tag">understand</span><h3 class="card-title mono">application-model-builder</h3><p>Map assets, actors, permissions and trust boundaries before a single payload.</p><span class="card-load mono">load &rarr;</span></article>
+          </div>
+        </div>
+
+        <div class="stage-group">
+          <h3 class="stage-title">Recon</h3>
+          <div class="grid grid-2">
+            <article class="card"><span class="card-tag">recon</span><h3 class="card-title mono">web2-recon</h3><p>Full recon pipeline — subdomains, live hosts, URLs, JS analysis, continuous monitoring.</p><span class="card-load mono">load &rarr;</span></article>
+          </div>
+        </div>
+
+        <div class="stage-group">
+          <h3 class="stage-title">Hunt</h3>
+          <div class="grid">
+            <article class="card"><span class="card-tag">hunt</span><h3 class="card-title mono">api-security</h3><p>REST, OAuth and JWT patterns — every one mapped as SIGNAL to test to confirm.</p><span class="card-load mono">load &rarr;</span></article>
+            <article class="card"><span class="card-tag">hunt</span><h3 class="card-title mono">business-logic-hunter</h3><p>Execution matrix for the highest-paying bug class: price, race, abuse, privilege.</p><span class="card-load mono">load &rarr;</span></article>
+            <article class="card"><span class="card-tag">hunt</span><h3 class="card-title mono">web2-vuln-classes</h3><p>24 bug classes — root causes, bypass tables, exploit techniques, real paid examples.</p><span class="card-load mono">load &rarr;</span></article>
+          </div>
+        </div>
+
+        <div class="stage-group">
+          <h3 class="stage-title">Discipline</h3>
+          <div class="grid grid-1">
+            <article class="card"><span class="card-tag">discipline</span><h3 class="card-title mono">domain-scoped-hunting</h3><p>Stays on-target: declared boundaries, pivot hints, and honest exit evidence.</p><span class="card-load mono">load &rarr;</span></article>
+          </div>
+        </div>
+
+        <div class="stage-group">
+          <h3 class="stage-title">Validate</h3>
+          <div class="grid">
+            <article class="card"><span class="card-tag">validate</span><h3 class="card-title mono">false-positive-killer</h3><p>Re-tests from a clean state and kills theoretical bugs before they hit triage.</p><span class="card-load mono">load &rarr;</span></article>
+            <article class="card"><span class="card-tag">validate</span><h3 class="card-title mono">triage-validation</h3><p>The 8-question gate. One wrong answer kills the report. Protects your N/A ratio.</p><span class="card-load mono">load &rarr;</span></article>
+          </div>
+        </div>
+
+        <div class="stage-group">
+          <h3 class="stage-title">Report</h3>
+          <div class="grid">
+            <article class="card"><span class="card-tag">report</span><h3 class="card-title mono">attack-path-builder</h3><p>Chains low and medium findings into one critical, independently verified path.</p><span class="card-load mono">load &rarr;</span></article>
+            <article class="card"><span class="card-tag">report</span><h3 class="card-title mono">report-writing</h3><p>Structured reports with proof of concept, impact and remediation — in EN and AR.</p><span class="card-load mono">load &rarr;</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROUTING -->
+    <section class="routing section" id="routing">
+      <div class="container container-split">
+        <div class="routing-copy reveal">
+          <p class="overline">How it thinks</p>
+          <h2>Ask it like you mean it.</h2>
+          <p>The router reads intent, not just keywords. A vague question becomes a scoped, multi-skill dispatch — and everything comes back evidence-gated.</p>
+        </div>
+
+        <div class="routing-term">
+          <div class="term-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span><span class="term-title">huntpack — <span class="t-arg">routing</span></span></div>
+          <div class="term-body">
+<pre><span class="t-prompt">$</span> "<span class="t-arg">is my payment flow abusable?</span>"
+<span class="t-ok">→</span> archetypes (fintech) → app-model → business-logic
+<span class="t-prompt">$</span> "<span class="t-arg">enumerate the attack surface</span>"
+<span class="t-ok">→</span> recon → surface-map → live-host sweep
+<span class="t-prompt">$</span> "<span class="t-arg">is this finding real?</span>"
+<span class="t-ok">→</span> fp-killer → triage-gate → report</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="install section" id="install">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="overline">Get started</p>
+          <h2>Install in about 30 seconds.</h2>
+          <p>Drop it into any agent that reads Agent Skills (<code class="inline">SKILL.md</code> with a <code class="inline">name</code> + <code class="inline">description</code>): Claude Code, OpenCode, and more.</p>
+        </div>
+
+        <div class="install-grid">
+          <div class="code">
+            <div class="code-bar"><span class="code-file mono">claude code</span><button class="copy" type="button" data-copy="/plugin marketplace add Aether-DZ/huntpack&#10;/plugin install huntpack" aria-label="Copy Claude Code install command"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M0 6.75C0 5.78.78 5 1.75 5h1v1h-1a.75.75 0 0 0-.75.75v7.5c0 .41.34.75.75.75h7.5c.41 0 .75-.34.75-.75v-1h1v1A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25z"/><path d="M4.75 0A1.75 1.75 0 0 0 3 1.75v7.5C3 10.22 3.78 11 4.75 11h7.5C13.22 11 14 10.22 14 9.25v-7.5A1.75 1.75 0 0 0 12.25 0zM6.5 1.75h5.75l.25.25v7.25l-.25.25H6.5l-.25-.25v-7.25z"/></svg></button></div>
+            <pre class="mono">/plugin marketplace add Aether-DZ/huntpack
+/plugin install huntpack</pre>
+          </div>
+
+          <div class="code">
+            <div class="code-bar"><span class="code-file mono">manual</span><button class="copy" type="button" data-copy="git clone https://github.com/Aether-DZ/huntpack&#10;cp -r huntpack/skills/* ~/.claude/skills/" aria-label="Copy manual install command"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M0 6.75C0 5.78.78 5 1.75 5h1.5v2h-1a.75.75 0 0 0-.75.75v7.5c0 .41.34.75.75.75h7.5c.41 0 .75-.34.75-.75v-2h1v2A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25z"/><path d="M5 1.75C5 .78 5.78 0 6.75 0h7.5C15.22 0 16 .78 16 1.75v7.5c0 .97-.78 1.75-1.75 1.75h-7.5A1.75 1.75 0 0 1 5 9.25zM6.5 1.5h7.25V1.5H6.5z"/></svg></button></div>
+            <pre class="mono">git clone https://github.com/Aether-DZ/huntpack
+cp -r huntpack/skills/* ~/.claude/skills/</pre>
+          </div>
+        </div>
+
+        <div class="install-cta">
+          <a class="btn btn-primary" href="https://github.com/Aether-DZ/huntpack" target="_blank" rel="noopener">View on GitHub</a>
+          <a class="text-link" href="https://github.com/Aether-DZ/huntpack/blob/main/docs/INSTALL.md" target="_blank" rel="noopener">Full install guide &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="mono brand-name">huntpack</span>
+        <p>Method-first bug bounty skills for AI agents.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="mono footer-label">Docs</span>
+          <a href="https://github.com/Aether-DZ/huntpack/blob/main/docs/INSTALL.md" target="_blank" rel="noopener">Install</a>
+          <a href="https://github.com/Aether-DZ/huntpack/blob/main/docs/PIPELINE.md" target="_blank" rel="noopener">Pipeline</a>
+          <a href="https://github.com/Aether-DZ/huntpack/blob/main/docs/SKILL-FORMAT.md" target="_blank" rel="noopener">Skill format</a>
+        </div>
+        <div class="footer-col">
+          <span class="mono footer-label">Repo</span>
+          <a href="https://github.com/Aether-DZ/huntpack" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/Aether-DZ/huntpack/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>
+          <a href="https://github.com/Aether-DZ/huntpack/blob/main/LICENSE" target="_blank" rel="noopener">License</a>
+        </div>
+      </div>
+      <div class="footer-note mono">MIT &middot; for authorized testing only</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
